@@ -10,7 +10,7 @@ node {
 
     stage('build') {
       myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle"){
-        sh './gradlew build'
+        sh '/opt/gradle/bin/gradle build'
       }
     }
 
