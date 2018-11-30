@@ -2,10 +2,11 @@ package main
 
 import "fmt"
 
-func helloworld() string {
-	return "Hello World!!"
+// Hello returns a greeting
+func Hello() string {
+	return "Hello, world"
 }
 
 func main() {
-	fmt.Println(helloworld())
+	fmt.Println(Hello())
 }
