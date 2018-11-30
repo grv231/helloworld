@@ -10,7 +10,6 @@ node {
 
     stage('build') {
         sh 'cd helloworld && ./gradlew build'
-      }
     }
 
     stage('sonar-scanner') {
