@@ -11,7 +11,7 @@ node {
     stage('build') {
       myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle"){
         sh '/opt/gradle/bin/gradle build'
-        go test "-coverprofile"=coverage.out
+        sh 'go test -coverprofile=coverage.out'
       }
     }
 
