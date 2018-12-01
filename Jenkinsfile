@@ -1,18 +1,17 @@
 node {
     def myGradleContainer = docker.image('gradle:jdk8-alpine')
     myGradleContainer.pull()
-    //ws("/var/lib/jenkins/goworkspace/src/github.com/helloworld")
 
     stage('prep') {
-        //ws("/var/lib/jenkins/goworkspace/src/github.com/helloworld"){
-        git url: 'https://github.com/grv231/helloworld.git'
-      //}
+        ws("/var/lib/jenkins/goworkspace/src/github.com/helloworld"){
+          git url: 'https://github.com/grv231/helloworld.git'
+          sh 'go test -coverprofile=coverage.out'
+      }
     }
 
     stage('build') {
       myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle"){
         sh '/opt/gradle/bin/gradle build'
-        sh 'go test -coverprofile=coverage.out'
       }
     }
 
